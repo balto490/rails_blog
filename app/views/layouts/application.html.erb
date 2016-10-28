@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsBlogFinal</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  </head>
+<body>
+<div id="navbar">
+	<ul>
+		<li>Home</li>
+		<li>Posts</li>
+		<li>Users</li>
+		<li>My Profile</li>
+	</ul>
+</div>
+  	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+ 		<span>Welcome, <%= current_user.firstname %></span>
+ 		<%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+ 	<% else %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field" id="emailinput">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field" id="passwordinput">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  
+
+ 
+  </div>
+  <div class="actions" id="submitbutton">
+    <%= f.submit "Log in" %>
+  </div>
+	<% end %>
+  <div class="signup" id="notauser">
+  	<span>Not a user? <%= link_to 'Sign Up Here', '/users/sign_up' %></span>
+  </div>
+<% end %>
+    <%= yield %>
+  </body>
+</html>
