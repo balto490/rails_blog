@@ -27,17 +27,23 @@
 	height: 90px;
 	color: #F0F3BD;
 	border-bottom: 5px solid #F0F3BD;
+	webkit-box-shadow: 0 8px 6px -6px #999;
+    moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
 }
+
+
 
 #navbar ul li {
 	display: inline-block;
     width: 100px;
     text-align: center;
-    padding-top: 35px;
+    /*padding-top: 35px;*/
     padding-bottom: 31px;
     padding-right: 10px;
     padding-left: 10px;
     font-size: 20px;
+    color: #F0F3BD;
 }
 
 ul {
@@ -73,6 +79,13 @@ ul {
 	position: absolute;
 	left: 74%;
 	top: 60px;
+	color: #F0F3BD;
+}
+
+#welcomeuser {
+	position: absolute;
+	left: 75%;
+	top: 35px;
 	color: #F0F3BD;
 }
 

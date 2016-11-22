@@ -1,0 +1,41 @@
+<% if user_signed_in? %>
+<div class="col-lg-8">
+	<div class="margins" id="postshow">
+		<h2><%= @post.title %></h2></br>
+		<p><%= @post.blog_post %></p>
+		<h6>Posted at: <%= @post.created_at %></h6>
+	</div>
+	<div class="margins" id="commentshow">
+	<h4>Comments:</h4>
+
+	<h5>Submit a comment:</h5>
+
+		<%= form_for Comment.new do |f| %>
+			<%= f.text_area :comment_post %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.hidden_field :post_id, value: 1 %>
+			<%= f.submit %> 
+		<% end %>
+
+	</div>
+</div>
+<div class="col-lg-4">
+	<h2>Recent Posts:</h2>
+	<% if @posts %>
+		<% @posts.reverse.each do |b|%>
+			<h3><%=b.title%></h3>
+			<a href="/posts/<%= b.id %>">Read More</a>
+		<% end %>
+	<% end %>
+</div>
+<%else%>
+<div class="col-lg-8">
+	<h2>Recent Posts:</h2>
+	<% if @posts %>
+		<% @posts.reverse.each do |b|%>
+			<h3><%=b.title%></h3>
+			<a href="/posts/<%= b.id %>">Read More</a>
+		<% end %>
+	<% end %>
+</div>
+<% end %>

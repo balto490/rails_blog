@@ -1,0 +1,22 @@
+
+<div class="col-lg-6">
+	<h1>Profile Information</h1>
+		<ul> 
+			<li>Name: <%=@user.firstname%> <%=@user.lastname%></li>
+			<li>Username: <%=@user.username%></li>
+			<li>Posts: <%=@user.posts.count%></li>
+			<li>Comments: <%=@user.comments.count%></li>
+		</ul>
+    		<a href="/users/edit">Edit Profile</a>
+	<%= image_tag current_user.avatar.url(:medium) %>
+</div>
+<div class="col-lg-6">
+	<h1>My Posts</h1>
+		<% @user.posts.reverse.each do |b|%>
+		<h3><%=b.title%></h3>
+		<h5><a href="/posts/<%= b.id %>/">Read Post</a><a href="/posts/<%= b.id %>/edit/"> Edit Post</a>
+		<%= link_to 'Delete', post_path(b.id),
+            data: {:confirm => 'Are you sure?'}, :method => :delete %></h5>
+		<% end %>
+</div>
+
